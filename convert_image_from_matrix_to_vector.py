@@ -18,13 +18,18 @@ def two_dim2one_dim(img):
 
 def one_dim2two_dim(vec,dimx,dimy):
     img = np.zeros((dimx,dimy,3))
+    b = np.zeros((dimx,dimy))
+    g = np.zeros((dimx,dimy))
+    r = np.zeros((dimx,dimy))
     counter = 0
     for i in range(dimx):
         for j in range(dimy):
-            img[i,j,0] = vec[counter+0]
-            img[i,j,1] = vec[counter+1]
-            img[i,j,2] = vec[counter+2]
+            b[i,j] = vec[counter+0]
+            g[i,j] = vec[counter+1]
+            r[i,j] = vec[counter+2]
             counter += 1
+    #img = cv2.merge([b,g,r])
+    img = np.dstack([b,g,r])
     return img
 
 def main():
